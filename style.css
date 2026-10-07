@@ -1,0 +1,88 @@
+/* =========================================================
+   TEMA: Gear 5 – hitam-putih, bulan, awan, glow perak
+   Latar: bg.jpg (gambar Gear 5)
+   ========================================================= */
+:root{
+  --aksen:#ffffff;
+  --glow:rgba(255,255,255,.55);
+  --kaca:rgba(12,12,18,.58);
+  --garis:rgba(255,255,255,.22);
+  --teks:#f2f2f7;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;min-height:100vh;display:flex;flex-direction:column;
+  font-family:"Segoe UI",Arial,sans-serif;line-height:1.7;color:var(--teks);background:#0b0b10;
+}
+
+/* ===== Latar (gambar) ===== */
+.latar{position:fixed;inset:0;z-index:0;overflow:hidden;background:#0b0b10}
+.latar img,.latar::after{ /* lapisan gelap + vignette supaya tulisan terbaca */
+  content:"";position:absolute;inset:0;
+  background:radial-gradient(ellipse at 50% 45%,transparent 20%,rgba(0,0,0,.55) 100%),
+             linear-gradient(180deg,rgba(0,0,0,.35),rgba(0,0,0,.55));
+}
+
+/* ===== Menu ===== */
+.menu{
+  position:sticky;top:0;z-index:20;display:flex;justify-content:center;flex-wrap:wrap;gap:6px;
+  padding:12px;background:rgba(10,10,15,.65);backdrop-filter:blur(12px);border-bottom:1px solid var(--garis);
+}
+.menu a{color:#fff;text-decoration:none;font-weight:600;padding:7px 20px;border-radius:999px;transition:.25s}
+.menu a:hover{background:rgba(255,255,255,.16)}
+.menu a.aktif{background:#fff;color:#111;box-shadow:0 0 22px var(--glow)}
+
+/* ===== Konten: kolom kanan agar karakter tetap terlihat di kiri ===== */
+main{position:relative;z-index:1;flex:1;width:100%;max-width:1200px;margin:0 auto;padding:36px 20px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px}
+.kolom{width:100%;max-width:640px;margin:0 auto}
+
+.profil{text-align:center}
+.foto{
+  display:block;margin:0 auto 14px;width:150px;height:150px;border-radius:50%;
+  object-fit:cover;object-position:center top;border:3px solid #fff;
+  box-shadow:0 0 0 6px rgba(255,255,255,.18),0 0 40px var(--glow);
+}
+.profil h1{margin:0;font-size:36px;letter-spacing:.5px;text-shadow:0 3px 18px rgba(0,0,0,.7)}
+.subjudul{margin:2px 0 0;font-size:17px;opacity:.95}
+.nim{display:inline-block;margin-top:10px;padding:3px 18px;border-radius:999px;background:rgba(255,255,255,.14);border:1px solid var(--garis);font-size:14px}
+
+.panel{
+  background:var(--kaca);backdrop-filter:blur(14px);border:1px solid var(--garis);
+  border-radius:22px;padding:28px 30px;box-shadow:0 14px 44px rgba(0,0,0,.5);animation:muncul .6s ease both;
+}
+@keyframes muncul{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+h2{margin:0 0 18px;font-size:27px;display:inline-block;padding-bottom:6px;border-bottom:3px solid #fff}
+p{margin:0 0 12px}
+
+.lanjut{display:flex;justify-content:space-between;gap:10px;margin-top:22px;flex-wrap:wrap}
+.tombol{display:inline-block;padding:9px 22px;border-radius:999px;font-weight:700;text-decoration:none;background:#fff;color:#111;transition:.25s}
+.tombol:hover{transform:translateY(-2px);box-shadow:0 6px 22px var(--glow)}
+.tombol.polos{background:transparent;color:#fff;border:2px solid var(--garis)}
+
+.daftar-keahlian{display:flex;flex-wrap:wrap;gap:12px}
+.label{background:rgba(255,255,255,.1);border:2px solid #fff;color:#fff;font-weight:700;padding:8px 22px;border-radius:999px;transition:.25s}
+.label:hover{background:#fff;color:#111;transform:translateY(-3px) rotate(-2deg)}
+
+.grid-proyek{display:grid;grid-template-columns:1fr;gap:16px}
+.kartu{background:rgba(255,255,255,.08);border:1px solid var(--garis);border-top:4px solid #fff;border-radius:16px;padding:18px 20px;transition:.25s}
+.kartu:hover{transform:translateY(-4px);background:rgba(255,255,255,.15)}
+.kartu h3{margin:0 0 8px}
+.teknologi{font-size:14px;opacity:.8;margin:0}
+
+.kotak-info{border-left:6px solid #fff;padding:6px 20px;background:rgba(255,255,255,.07);border-radius:10px}
+.versi{display:inline-block;background:#fff;color:#111;font-weight:700;padding:2px 14px;border-radius:6px}
+
+a{color:#fff}
+footer{position:relative;z-index:1;text-align:center;padding:20px 16px 64px;font-size:14px;opacity:.85}
+
+@media(max-width:800px){
+  main{align-items:center}
+  .latar::after{background:rgba(0,0,0,.6)}
+}
+@media(max-width:600px){
+  .profil h1{font-size:28px}
+  h2{font-size:22px}
+  .panel{padding:22px 18px}
+}
